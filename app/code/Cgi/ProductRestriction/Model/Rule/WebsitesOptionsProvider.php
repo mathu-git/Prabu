@@ -11,6 +11,7 @@
 namespace Cgi\ProductRestriction\Model\Rule;
 
 use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Store\Model\System\Store;
 
 /**
  * Class WebsitesOptionsProvider
@@ -19,14 +20,14 @@ use Magento\Framework\Data\OptionSourceInterface;
 class WebsitesOptionsProvider implements OptionSourceInterface
 {
     /**
-     * @var \Magento\Store\Model\System\Store
+     * @var Store
      */
     private $store;
 
     /**
-     * @param \Magento\Store\Model\System\Store $store
+     * @param Store $store
      */
-    public function __construct(\Magento\Store\Model\System\Store $store)
+    public function __construct(Store $store)
     {
         $this->store = $store;
     }

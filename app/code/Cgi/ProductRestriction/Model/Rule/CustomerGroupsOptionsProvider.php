@@ -9,6 +9,9 @@
  */
 
 namespace Cgi\ProductRestriction\Model\Rule;
+use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Convert\DataObject;
 use Magento\Framework\Data\OptionSourceInterface;
 
 /**
@@ -18,30 +21,30 @@ use Magento\Framework\Data\OptionSourceInterface;
 class CustomerGroupsOptionsProvider implements OptionSourceInterface
 {
     /**
-     * @var \Magento\Customer\Api\GroupRepositoryInterface
+     * @var GroupRepositoryInterface
      */
     private $groupRepository;
 
     /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
+     * @var SearchCriteriaBuilder
      */
     private $searchCriteriaBuilder;
 
     /**
-     * @var \Magento\Framework\Convert\DataObject
+     * @var DataObject
      */
     private $objectConverter;
 
     /**
      * CustomerGroupsOptionsProvider constructor.
-     * @param \Magento\Customer\Api\GroupRepositoryInterface $groupRepository
-     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param \Magento\Framework\Convert\DataObject $objectConverter
+     * @param GroupRepositoryInterface $groupRepository
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param DataObject $objectConverter
      */
     public function __construct(
-        \Magento\Customer\Api\GroupRepositoryInterface $groupRepository,
-        \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder,
-        \Magento\Framework\Convert\DataObject $objectConverter
+        GroupRepositoryInterface $groupRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        DataObject $objectConverter
     ) {
         $this->groupRepository = $groupRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;

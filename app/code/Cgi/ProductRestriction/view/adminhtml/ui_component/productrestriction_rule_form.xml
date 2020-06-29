@@ -188,7 +188,7 @@
                 <item name="config" xsi:type="array">
                     <item name="default" xsi:type="number">1</item>
                     <item name="source" xsi:type="string">productrestriction_rule</item>
-                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="visible" xsi:type="boolean">false</item>
                 </item>
             </argument>
             <settings>
