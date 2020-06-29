@@ -4,9 +4,8 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Cgi_ProductRestriction::catalog_productrestriction" sortOrder="10"
-                          title="catalog productrestriction">
-                    <resource id="Cgi_ProductRestriction::promo_catalog" sortOrder="10" title="promo catalog"/>
+            <resource id="Cgi_ProductRestriction::catalog_productrestriction" sortOrder="10" title="Product Restriction">
+                    <resource id="Cgi_ProductRestriction::promo_catalog" sortOrder="10" title="catalog Restriction"/>
                 </resource>
             </resource>
         </resources>

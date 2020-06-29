@@ -15,7 +15,7 @@ use Magento\Framework\App\ResponseFactory;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Cgi\ProductRestriction\Helper\Data;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Registry;
 use Magento\Framework\UrlInterface;
 
 class CatalogProductView implements ObserverInterface
@@ -36,19 +36,16 @@ class CatalogProductView implements ObserverInterface
     protected $url;
 
     /**
-     * @var
+     * @var $helper
      */
     protected $helper;
 
-    /**
-     * @var ObjectManagerInterface
-     */
-    protected $_objectManager;
+    public $registry;
 
     /**
-     * @var UrlInterface
+     * @var Data
      */
-    protected $_urlInterface;
+    public $dataHelper;
 
     /**
      * @param ResponseFactory $responseFactory
@@ -60,21 +57,20 @@ class CatalogProductView implements ObserverInterface
         UrlInterface $url,
         Session $customerSession,
         Data $helper,
-        ObjectManagerInterface $objectManager
+        Registry $registry
     )
     {
         $this->responseFactory = $responseFactory;
         $this->url = $url;
         $this->customerSession = $customerSession;
         $this->dataHelper = $helper;
-        $this->_objectManager = $objectManager;
+        $this->registry = $registry;
     }
 
     public function execute(Observer $observer)
     {
         $restrictedProductIds = $this->dataHelper->getRestrictionProducts();
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+        $product = $this->registry->registry('current_product');
         $currentProductId = $product->getId();
         if (in_array($currentProductId, $restrictedProductIds)) {
             $url = $this->url->getUrl('404notfound');

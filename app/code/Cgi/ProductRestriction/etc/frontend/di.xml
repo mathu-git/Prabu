@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="catalog_product_list_widget_name_sortorder" type="Cgi\ProductRestriction\Plugin\Block\Product\ProductsListPlugin" />
+    </type>
+</config>

@@ -61,9 +61,9 @@ class Collection extends AbstractCollection
         AdapterInterface $connection = null,
         AbstractDb $resource = null,
         Json $serializer = null
-    ) {
+    )
+    {
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
-        //$this->_associatedEntitiesMap = $this->getAssociatedEntitiesMap();
         $this->serializer = $serializer ?: ObjectManager::getInstance()->get(Json::class);
     }
 
@@ -72,7 +72,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Rule::class, \Cgi\ProductRestriction\Model\ResourceModel\Rule::class);
+        $this->_init(Rule::class, \Magento\CatalogRule\Model\ResourceModel\Rule::class);
     }
 
     /**
@@ -81,7 +81,7 @@ class Collection extends AbstractCollection
     public function _initSelect()
     {
         parent::_initSelect();
-        $this->addFieldToFilter('is_product_restriction', self::RESTRICTION_GRID_FILTER );
+        $this->addFieldToFilter('is_product_restriction', self::RESTRICTION_GRID_FILTER);
         return $this;
     }
 
@@ -134,9 +134,6 @@ class Collection extends AbstractCollection
      */
     protected function _afterLoad()
     {
-        //$this->mapAssociatedEntities('website', 'website_ids');
-        //$this->mapAssociatedEntities('customer_group', 'customer_group_ids');
-
         $this->setFlag('add_websites_to_result', false);
         return parent::_afterLoad();
     }

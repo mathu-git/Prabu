@@ -24,7 +24,6 @@ class Collection extends \Cgi\ProductRestriction\Model\ResourceModel\Rule\Collec
     {
         parent::_initSelect();
         $this->addWebsitesToResult();
-
         return $this;
     }
 }

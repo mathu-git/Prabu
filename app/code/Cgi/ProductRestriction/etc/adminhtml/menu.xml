@@ -2,8 +2,13 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
+        <add id="Cgi_ProductRestriction::catalog_productrestriction" module="Cgi_ProductRestriction" resource="Magento_Backend::content" sortOrder="9999"
+             title="Product Restriction"/>
         <add action="catalog_productrestriction/promo/catalog" id="Cgi_ProductRestriction::promo_catalog"
-             module="Cgi_ProductRestriction" parent="Magento_CatalogRule::promo" dependsOnModule="Magento_Catalog"
-             resource="Cgi_ProductRestriction::promo_catalog" sortOrder="9999" title="Product Restriction"/>
+             module="Cgi_ProductRestriction" parent="Cgi_ProductRestriction::catalog_productrestriction" resource="Magento_Backend::content" sortOrder="9999"
+             title="Catalog Product Restriction"/>
     </menu>
 </config>
+
+
+
