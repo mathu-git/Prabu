@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!--
+  ~ /**
+  ~  * Copyright © 2020 CGI. All rights reserved.
+  ~  * See COPYING.txt for license details.
+  ~  *
+  ~  * @author    CGI <info.de@cgi.com>
+  ~  * @copyright 2020 CGI
+  ~  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  ~  */
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="productrestriction_rule_data_source" xsi:type="string">
+                    Cgi\ProductRestriction\Model\ResourceModel\Catalog\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Cgi\ProductRestriction\Model\ResourceModel\Catalog\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalogrule</argument>
+            <argument name="resourceModel" xsi:type="string">Cgi\ProductRestriction\Model\ResourceModel\Catalog
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\CatalogRule\Controller\Adminhtml\Promo\Catalog\Save"
+                type="Cgi\ProductRestriction\Controller\Rewrite\Adminhtml\Promo\Catalog\Save"/>
+
+    <preference for="Magento\CatalogRule\Model\ResourceModel\Rule"
+                type="Cgi\ProductRestriction\Model\Rewrite\ResourceModel\RestrictionRule"/>
+
+    <preference for="Magento\CatalogRule\Controller\Adminhtml\Promo\Catalog\ApplyRules"
+                type="Cgi\ProductRestriction\Controller\Rewrite\Adminhtml\Promo\Catalog\ApplyRules"/>
+
+    <preference for="Magento\CatalogRule\Model\ResourceModel\Grid\Collection"
+                type="Cgi\ProductRestriction\Model\Rewrite\ResourceModel\Grid\Collection"/>
+
+</config>

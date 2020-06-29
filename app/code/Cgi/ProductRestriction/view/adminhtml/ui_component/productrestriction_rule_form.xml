@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                productrestriction_rule_form.productrestriction_rule_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Product Restriction Rule</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="delete" class="Cgi\ProductRestriction\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="save_and_apply" class="Cgi\ProductRestriction\Block\Adminhtml\Edit\SaveAndApplyButton"/>
+            <button name="save_and_continue" class="Cgi\ProductRestriction\Block\Adminhtml\Edit\SaveAndContinueButton"/>
+            <button name="reset" class="Cgi\ProductRestriction\Block\Adminhtml\Edit\ResetButton"/>
+            <button name="save" class="Cgi\ProductRestriction\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="back">
+                <url path="*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>productrestriction_rule_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>productrestriction_rule_form.productrestriction_rule_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="productrestriction_rule_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="catalog_rule/promo_catalog/save"/>
+        </settings>
+        <dataProvider class="Magento\CatalogRule\Model\Rule\DataProvider"
+                      name="productrestriction_rule_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>rule_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="rule_information" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label translate="true">Rule Information</label>
+        </settings>
+        <field name="rule_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>rule_id</dataScope>
+            </settings>
+        </field>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Rule Name</label>
+                <visible>true</visible>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="description" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Description</label>
+                <visible>true</visible>
+                <dataScope>description</dataScope>
+            </settings>
+        </field>
+        <field name="is_active" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Status</label>
+                <visible>true</visible>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="number">1</item>
+                                <item name="label" xsi:type="string" translate="true">Active</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="number">0</item>
+                                <item name="label" xsi:type="string" translate="true">Inactive</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+        <field name="website_ids" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <tooltip>
+                    <link>https://docs.magento.com/m2/ce/user_guide/configuration/scope.html</link>
+                    <description>What is this?</description>
+                </tooltip>
+                <label translate="true">Websites</label>
+                <dataScope>website_ids</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Cgi\ProductRestriction\Model\Rule\WebsitesOptionsProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="customer_group_ids" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="true">Customer Groups</label>
+                <dataScope>customer_group_ids</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Cgi\ProductRestriction\Model\Rule\CustomerGroupsOptionsProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="sort_order" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Priority</label>
+                <dataScope>sort_order</dataScope>
+            </settings>
+        </field>
+        <field name="is_product_restriction" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                    <item name="source" xsi:type="string">productrestriction_rule</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+    <htmlContent name="html_content" sortOrder="20">
+        <argument name="data" xsi:type="array">
+            <item name="wrapper" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Conditions</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <settings>
+            <wrapper>
+                <canShow>true</canShow>
+                <componentType>fieldset</componentType>
+            </wrapper>
+        </settings>
+        <block class="Cgi\ProductRestriction\Block\Adminhtml\Promo\Edit\Tab\Conditions"
+               name="Product_restriction_condition_tab"/>
+    </htmlContent>
+</form>

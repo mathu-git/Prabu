@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+  ~ /**
+  ~  * Copyright © 2020 CGI. All rights reserved.
+  ~  * See COPYING.txt for license details.
+  ~  *
+  ~  * @author    CGI <info.de@cgi.com>
+  ~  * @copyright 2020 CGI
+  ~  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  ~  */
+  -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="catalogrule" resource="default" engine="innodb" comment="CatalogRule">
+        <column xsi:type="smallint" name="is_product_restriction" padding="6" default="0" unsigned="false"
+                nullable="false" identity="false" comment="Catalog Product Restriction"/>
+    </table>
+</schema>
