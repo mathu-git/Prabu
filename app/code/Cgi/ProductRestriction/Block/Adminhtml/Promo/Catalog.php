@@ -40,4 +40,3 @@ class Catalog extends \Magento\Backend\Block\Widget\Grid\Container
         );
     }
 }
-

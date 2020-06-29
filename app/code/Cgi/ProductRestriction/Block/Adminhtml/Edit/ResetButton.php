@@ -36,4 +36,3 @@ class ResetButton extends GenericButton implements ButtonProviderInterface
         return $data;
     }
 }
-

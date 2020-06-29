@@ -69,4 +69,3 @@ class Edit extends RestrictionAction implements HttpGetActionInterface
         $this->_view->renderLayout();
     }
 }
-

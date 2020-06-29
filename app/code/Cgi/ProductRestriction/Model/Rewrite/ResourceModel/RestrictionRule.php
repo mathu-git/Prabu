@@ -41,7 +41,6 @@ class RestrictionRule extends Rule
             ->from($this->getTable(self::CATALOGRULE_CUSTOMER_GROUP), ['customer_group_id', 'rule_id'])
             ->where('customer_group_id = ?', $gId);
         return $connection->fetchAll($select);
-
     }
 
     /**

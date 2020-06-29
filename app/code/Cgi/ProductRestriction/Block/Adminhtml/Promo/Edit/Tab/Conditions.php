@@ -50,8 +50,7 @@ class Conditions extends Generic implements TabInterface
         \Magento\Rule\Block\Conditions $conditions,
         Fieldset $rendererFieldset,
         array $data = []
-    )
-    {
+    ) {
         $this->_rendererFieldset = $rendererFieldset;
         $this->_conditions = $conditions;
         parent::__construct($context, $registry, $formFactory, $data);
@@ -192,4 +191,3 @@ class Conditions extends Generic implements TabInterface
         }
     }
 }
-

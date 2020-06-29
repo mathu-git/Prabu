@@ -12,7 +12,6 @@
 
 namespace Cgi\ProductRestriction\Controller\Rewrite\Adminhtml\Promo\Catalog;
 
-
 use Magento\CatalogRule\Controller\Adminhtml\Promo\Catalog;
 use Magento\CatalogRule\Model\Flag;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;

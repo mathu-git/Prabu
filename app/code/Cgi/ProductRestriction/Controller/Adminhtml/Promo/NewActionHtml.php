@@ -10,6 +10,7 @@
  *
  */
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
+
 use Magento\CatalogRule\Model\Rule;
 use Magento\Rule\Model\Action\AbstractAction;
 

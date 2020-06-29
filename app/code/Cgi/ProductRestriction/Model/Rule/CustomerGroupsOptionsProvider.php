@@ -9,6 +9,7 @@
  */
 
 namespace Cgi\ProductRestriction\Model\Rule;
+
 use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Convert\DataObject;
@@ -60,4 +61,3 @@ class CustomerGroupsOptionsProvider implements OptionSourceInterface
         return $this->objectConverter->toOptionArray($customerGroups, 'id', 'code');
     }
 }
-

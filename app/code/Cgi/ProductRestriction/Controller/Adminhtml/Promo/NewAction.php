@@ -10,6 +10,7 @@
  *
  */
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
+
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Cgi\ProductRestriction\Controller\Adminhtml\Promo\RestrictionAction;
@@ -23,8 +24,8 @@ class NewAction extends RestrictionAction implements HttpGetActionInterface
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $coreRegistry)
-    {
+        \Magento\Framework\Registry $coreRegistry
+    ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $coreRegistry;
         parent::__construct($context, $coreRegistry);
@@ -37,4 +38,3 @@ class NewAction extends RestrictionAction implements HttpGetActionInterface
         $this->_forward('edit');
     }
 }
-

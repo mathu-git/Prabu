@@ -53,4 +53,3 @@ class SaveAndApplyButton extends GenericButton implements ButtonProviderInterfac
         return $data;
     }
 }
-

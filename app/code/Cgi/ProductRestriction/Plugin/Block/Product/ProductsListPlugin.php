@@ -31,8 +31,7 @@ class ProductsListPlugin
     public function __construct(
         Session $customerSession,
         Data $helper
-    )
-    {
+    ) {
         $this->customerSession = $customerSession;
         $this->dataHelper = $helper;
     }
@@ -55,5 +54,3 @@ class ProductsListPlugin
         }
     }
 }
-
-

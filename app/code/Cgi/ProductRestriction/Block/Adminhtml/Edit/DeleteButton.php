@@ -33,8 +33,8 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                 'label' => ('Delete Rule'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\'' . __(
-                        'Are you sure you want to do this?'
-                    ) . '\', \'' . $this->urlBuilder->getUrl('*/*/delete', ['id' => $ruleId]) . '\', {data: {}})',
+                    'Are you sure you want to do this?'
+                ) . '\', \'' . $this->urlBuilder->getUrl('*/*/delete', ['id' => $ruleId]) . '\', {data: {}})',
                 'sort_order' => 20,
             ];
             return $data;

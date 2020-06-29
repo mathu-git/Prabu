@@ -48,5 +48,3 @@ class NewConditionHtml extends RestrictionAction implements HttpPostActionInterf
         $this->getResponse()->setBody($html);
     }
 }
-
-

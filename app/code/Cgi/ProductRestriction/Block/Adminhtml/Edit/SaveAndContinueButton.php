@@ -36,4 +36,3 @@ class SaveAndContinueButton extends GenericButton implements ButtonProviderInter
         return $data;
     }
 }
-

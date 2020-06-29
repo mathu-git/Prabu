@@ -15,10 +15,15 @@ use Magento\Framework\App\ResponseFactory;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Cgi\ProductRestriction\Helper\Data;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 
 /**
  * Class CatalogProductInitAfterObserver
+ *
  * @package Cgi\ProductRestriction\Observer
  */
 class CatalogProductInitAfterObserver implements ObserverInterface
@@ -42,23 +47,27 @@ class CatalogProductInitAfterObserver implements ObserverInterface
      * @var
      */
     protected $helper;
+    /**
+     * @var dataHelper
+     */
+    public $dataHelper;
 
     /**
      * @param ResponseFactory $responseFactory
      * @param UrlInterface $url
      * @param Session $customerSession
+     * @param Data $dataHelper
      */
     public function __construct(
         ResponseFactory $responseFactory,
         UrlInterface $url,
         Session $customerSession,
-        Data $helper
-    )
-    {
+        Data $dataHelper
+    ) {
         $this->responseFactory = $responseFactory;
         $this->url = $url;
         $this->customerSession = $customerSession;
-        $this->dataHelper = $helper;
+        $this->dataHelper = $dataHelper;
     }
 
     /**
@@ -69,10 +78,11 @@ class CatalogProductInitAfterObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
+        /** @var ProductCollection $collection */
+        $newCollection = $observer->getEvent()->getCollection();
         $productIds = $this->dataHelper->getRestrictionProducts();
-        $productCollection = $observer->getEvent()->getCollection();
-        if ($productCollection) {
-            $productCollection
+        if ($newCollection) {
+            $newCollection
                 ->addAttributeToSelect('*')
                 ->addAttributeToFilter('entity_id', array('nin' => $productIds));
         }

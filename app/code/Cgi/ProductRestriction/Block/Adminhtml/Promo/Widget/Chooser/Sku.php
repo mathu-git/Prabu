@@ -58,8 +58,7 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $cpCollection,
         Type $catalogType,
         array $data = []
-    )
-    {
+    ) {
         $this->_catalogType = $catalogType;
         $this->_cpCollection = $cpCollection;
         $this->_eavAttSetCollection = $eavAttSetCollection;

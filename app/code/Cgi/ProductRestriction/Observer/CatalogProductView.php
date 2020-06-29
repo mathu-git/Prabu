@@ -58,8 +58,7 @@ class CatalogProductView implements ObserverInterface
         Session $customerSession,
         Data $helper,
         Registry $registry
-    )
-    {
+    ) {
         $this->responseFactory = $responseFactory;
         $this->url = $url;
         $this->customerSession = $customerSession;
@@ -80,4 +79,3 @@ class CatalogProductView implements ObserverInterface
         }
     }
 }
-

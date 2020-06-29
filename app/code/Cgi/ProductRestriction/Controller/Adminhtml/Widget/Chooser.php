@@ -71,4 +71,3 @@ class Chooser extends Widget
         }
     }
 }
-

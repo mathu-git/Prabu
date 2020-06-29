@@ -39,8 +39,7 @@ class GenericButton
     public function __construct(
         Context $context,
         Registry $registry
-    )
-    {
+    ) {
         $this->urlBuilder = $context->getUrlBuilder();
         $this->registry = $registry;
     }
@@ -73,4 +72,3 @@ class GenericButton
         return $name;
     }
 }
-

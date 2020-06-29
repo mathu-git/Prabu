@@ -23,6 +23,8 @@ class Collection extends \Magento\CatalogRule\Model\ResourceModel\Rule\Collectio
     public const RESTRICTION_GRID_FILTER = '1';
 
     /**
+     * Initialize the catalog product restriction gird
+     *
      * @return $this
      */
     public function _initSelect()
@@ -34,4 +36,3 @@ class Collection extends \Magento\CatalogRule\Model\ResourceModel\Rule\Collectio
         return $this;
     }
 }
-

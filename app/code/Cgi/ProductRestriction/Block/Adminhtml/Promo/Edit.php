@@ -30,9 +30,7 @@ class Edit extends \Magento\Backend\Block\Template
     public function __construct(
         Context $context,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
     }
 }
-

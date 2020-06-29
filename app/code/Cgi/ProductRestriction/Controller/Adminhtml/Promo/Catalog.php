@@ -39,4 +39,3 @@ class Catalog extends RestrictionAction implements HttpGetActionInterface
         return $resultPage;
     }
 }
-

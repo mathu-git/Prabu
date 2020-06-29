@@ -48,8 +48,7 @@ class Save extends Action
         Registry $coreRegistry,
         Date $dateFilter,
         DataPersistorInterface $dataPersistor
-    )
-    {
+    ) {
         $this->dataPersistor = $dataPersistor;
         $this->_coreRegistry = $coreRegistry;
         $this->_dateFilter = $dateFilter;
@@ -62,7 +61,6 @@ class Save extends Action
     public function execute()
     {
         if ($this->getRequest()->getPostValue()) {
-
             $ruleRepository = $this->_objectManager->get(
                 RestrictionRuleRepositoryInterface::class
             );

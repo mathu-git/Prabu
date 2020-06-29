@@ -88,9 +88,4 @@ abstract class RestrictionAction extends Action
         );
         return $this->_dirtyRulesNoticeMessage ? $this->_dirtyRulesNoticeMessage : $defaultMessage;
     }
-
-
-
-
 }
-

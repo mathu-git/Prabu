@@ -20,4 +20,3 @@ class RegistryConstants
      */
     const CURRENT_RULE_ID = 'current_promo_productionrestriction_rule';
 }
-
