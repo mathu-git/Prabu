@@ -92,15 +92,13 @@
                             </argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Backend\Block\Widget\Grid\Column\Multistore"
-                           name="promo.catalog.grid.columnSet.rule_website" as="rule_website">
+                    <block class="Magento\Backend\Block\Widget\Grid\Column\Multistore" name="promo.catalog.grid.columnSet.rule_website" as="rule_website">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Web Site</argument>
                             <argument name="index" xsi:type="string">website_ids</argument>
                             <argument name="sortable" xsi:type="string">0</argument>
                             <argument name="type" xsi:type="string">options</argument>
-                            <argument name="options" xsi:type="options"
-                                      model="Magento\Config\Model\Config\Source\Website\OptionHash"/>
+                            <argument name="options" xsi:type="options" model="Magento\Config\Model\Config\Source\Website\OptionHash"/>
                         </arguments>
                     </block>
                 </block>

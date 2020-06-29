@@ -14,7 +14,6 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogWidget\Block\Product\ProductsList;
 use Cgi\ProductRestriction\Helper\Data;
 use Magento\Customer\Model\Session;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class ProductsListPlugin

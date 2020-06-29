@@ -15,15 +15,22 @@ namespace Cgi\ProductRestriction\Model\ResourceModel\Grid;
  * Class Collection
  * @package Cgi\ProductRestriction\Model\ResourceModel\Grid
  */
-class Collection extends \Cgi\ProductRestriction\Model\ResourceModel\Rule\Collection
+class Collection extends \Magento\CatalogRule\Model\ResourceModel\Rule\Collection
 {
+    /**
+     * Filter the catalog product restriction rules
+     */
+    public const RESTRICTION_GRID_FILTER = '1';
+
     /**
      * @return $this
      */
     public function _initSelect()
     {
         parent::_initSelect();
+        $this->addFieldToFilter('is_product_restriction', self::RESTRICTION_GRID_FILTER);
         $this->addWebsitesToResult();
+
         return $this;
     }
 }

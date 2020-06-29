@@ -11,12 +11,10 @@
 /**
  * Catalog rules resource model
  *
- * @author      Magento Core Team <core@magentocommerce.com>
  */
 
 namespace Cgi\ProductRestriction\Model\Rewrite\ResourceModel;
 
-use Magento\Catalog\Model\Product;
 use Magento\CatalogRule\Model\ResourceModel\Rule;
 
 /**
