@@ -53,7 +53,8 @@ class CatalogProductInitAfterObserver implements ObserverInterface
         UrlInterface $url,
         Session $customerSession,
         Data $helper
-    ) {
+    )
+    {
         $this->responseFactory = $responseFactory;
         $this->url = $url;
         $this->customerSession = $customerSession;
@@ -70,7 +71,7 @@ class CatalogProductInitAfterObserver implements ObserverInterface
     {
         $productIds = $this->dataHelper->getRestrictionProducts();
         $productCollection = $observer->getEvent()->getCollection();
-        if($productCollection) {
+        if ($productCollection) {
             $productCollection
                 ->addAttributeToSelect('*')
                 ->addAttributeToFilter('entity_id', array('nin' => $productIds));

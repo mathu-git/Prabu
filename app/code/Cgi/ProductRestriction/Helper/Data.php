@@ -12,16 +12,20 @@ namespace Cgi\ProductRestriction\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use Magento\Catalog\Model\Product;
 use Cgi\ProductRestriction\Model\Rewrite\ResourceModel\RestrictionRule;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
+/**
+ * Class Data
+ * @package Cgi\ProductRestriction\Helper
+ */
 class Data extends AbstractHelper
 {
-    const RESTRICTION_CODE = 'catalogrule_product';
-
+    /**
+     *
+     */
     const IS_RESTRICTION = 1;
 
     /**
@@ -44,6 +48,14 @@ class Data extends AbstractHelper
      */
     //private $ruleResource;
 
+    /**
+     * Data constructor.
+     * @param TimezoneInterface $dateTime
+     * @param StoreManagerInterface $storeManager
+     * @param Session $customerSession
+     * @param RestrictionRule $ruleResource
+     * @param Context $context
+     */
     public function __construct(
         TimezoneInterface $dateTime,
         StoreManagerInterface $storeManager,
@@ -58,6 +70,11 @@ class Data extends AbstractHelper
         $this->ruleResource = $ruleResource;
     }
 
+    /**
+     * @return bool
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getRestrictionCustomerGroupRuleds(){
 
         $dateTime = $this->dateTime->scopeDate($this->storeManager->getStore()->getId());
@@ -74,6 +91,11 @@ class Data extends AbstractHelper
 
     }
 
+    /**
+     * @return bool
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getActiveRulesId(){
 
         $dateTime = $this->dateTime->scopeDate($this->storeManager->getStore()->getId());
@@ -89,12 +111,18 @@ class Data extends AbstractHelper
         return false;
     }
 
+    /**
+     * @return array|bool
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getRestrictionProducts(){
         $restrictedId = $this->getActiveRulesId();
         $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
         $customergroupId = (int)$this->customerSession->getCustomerGroupId();
         $productIds = $this->ruleResource->getRestrectionProductIds($restrictedId, $websiteId, $customergroupId);
         if($productIds) {
+            $restrictedProductIds = [];
             foreach ($productIds as $productId) {
                 $restrictedProductIds[] = $productId['product_id'];
             }

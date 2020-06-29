@@ -77,8 +77,7 @@ class CatalogProductView implements ObserverInterface
         $product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
         $currentProductId = $product->getId();
         if (in_array($currentProductId, $restrictedProductIds)) {
-            $url = $this->url->getUrl('404notfound'); // give here your controller/action
-            // below code redirects to 404 Page
+            $url = $this->url->getUrl('404notfound');
             $observer->getControllerAction()
                 ->getResponse()
                 ->setRedirect($url);
