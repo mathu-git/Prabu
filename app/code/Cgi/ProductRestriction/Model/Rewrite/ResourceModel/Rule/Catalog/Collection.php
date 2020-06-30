@@ -10,9 +10,17 @@
 
 namespace Cgi\ProductRestriction\Model\Rewrite\Resource\Rule\Catalog;
 
+use Magento\CatalogRule\Model\ResourceModel\Rule\AssociatedEntityMap;
+use Magento\CatalogRule\Model\Rule;
+use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
+use Magento\Framework\Data\Collection\EntityFactoryInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\App\ObjectManager;
 use Magento\Rule\Model\ResourceModel\Rule\Collection\AbstractCollection;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class Collection
@@ -20,7 +28,6 @@ use Magento\Rule\Model\ResourceModel\Rule\Collection\AbstractCollection;
  */
 class Collection extends AbstractCollection
 {
-
     /**
      * Store associated with rule entities information map
      *
@@ -35,21 +42,21 @@ class Collection extends AbstractCollection
 
     /**
      * Collection constructor.
-     * @param \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Framework\DB\Adapter\AdapterInterface $connection
-     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
+     * @param EntityFactoryInterface $entityFactory
+     * @param LoggerInterface $logger
+     * @param FetchStrategyInterface $fetchStrategy
+     * @param ManagerInterface $eventManager
+     * @param AdapterInterface $connection
+     * @param AbstractDb $resource
      * @param Json|null $serializer
      */
     public function __construct(
-        \Magento\Framework\Data\Collection\EntityFactoryInterface $entityFactory,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
-        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null,
+        EntityFactoryInterface $entityFactory,
+        LoggerInterface $logger,
+        FetchStrategyInterface $fetchStrategy,
+        ManagerInterface $eventManager,
+        AdapterInterface $connection = null,
+        AbstractDb $resource = null,
         Json $serializer = null
     ) {
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
@@ -65,14 +72,14 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(\Magento\CatalogRule\Model\Rule::class, \Magento\CatalogRule\Model\ResourceModel\Rule::class);
+        $this->_init(Rule::class, \Magento\CatalogRule\Model\ResourceModel\Rule::class);
     }
 
     /**
      * Find product attribute in conditions or actions
      *
      * @param string $attributeCode
-     * @return \Magento\CatalogRule\Model\ResourceModel\Rule\Collection
+     * @return Collection
      * @api
      */
     public function addAttributeInConditionFilter($attributeCode)
@@ -152,17 +159,18 @@ class Collection extends AbstractCollection
     }
 
     /**
+     * Associate the entity mapping process
+     *
      * @return array
      * @deprecated 100.1.0
      */
     private function getAssociatedEntitiesMap()
     {
         if (!$this->_associatedEntitiesMap) {
-            $this->_associatedEntitiesMap = \Magento\Framework\App\ObjectManager::getInstance()
-                ->get(\Magento\CatalogRule\Model\ResourceModel\Rule\AssociatedEntityMap::class)
+            $this->_associatedEntitiesMap = ObjectManager::getInstance()
+                ->get(AssociatedEntityMap::class)
                 ->getData();
         }
         return $this->_associatedEntitiesMap;
     }
-
 }

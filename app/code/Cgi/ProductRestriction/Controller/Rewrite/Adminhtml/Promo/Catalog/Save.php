@@ -23,6 +23,7 @@ use Magento\Framework\App\ObjectManager;
 
 /**
  * Class Save
+ *
  * @package Cgi\ProductRestriction\Controller\Rewrite\Adminhtml\Promo\Catalog
  */
 class Save extends Catalog implements HttpPostActionInterface
@@ -53,6 +54,7 @@ class Save extends Catalog implements HttpPostActionInterface
 
     /**
      * Save constructor.
+     *
      * @param Context $context
      * @param Registry $coreRegistry
      * @param Date $dateFilter
@@ -65,17 +67,16 @@ class Save extends Catalog implements HttpPostActionInterface
         Date $dateFilter,
         TimezoneInterface $localeDate = null,
         DataPersistorInterface $dataPersistor = null
-    )
-    {
+    ) {
         parent::__construct($context, $coreRegistry, $dateFilter);
         $this->_coreRegistry = $coreRegistry;
         $this->_dateFilter = $dateFilter;
         $this->localeDate = $localeDate ?? ObjectManager::getInstance()->get(
-                TimezoneInterface::class
-            );
+            TimezoneInterface::class
+        );
         $this->dataPersistor = $dataPersistor ?? ObjectManager::getInstance()->get(
-                DataPersistorInterface::class
-            );
+            DataPersistorInterface::class
+        );
     }
 
     /**
@@ -169,7 +170,6 @@ class Save extends Catalog implements HttpPostActionInterface
                 }
                 return;
             } catch (LocalizedException $e) {
-
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(
@@ -184,10 +184,11 @@ class Save extends Catalog implements HttpPostActionInterface
         }
 
         $this->_redirect('catalog_rule/*/');
-
     }
 
     /**
+     * Save the product Restriction
+     *
      * @param $data
      */
     public function SaveProductRestriction($data)
@@ -263,7 +264,6 @@ class Save extends Catalog implements HttpPostActionInterface
                     $this->_redirect('catalog_productrestriction/promo/catalog');
                 }
                 return;
-
             } catch (LocalizedException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {

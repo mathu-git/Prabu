@@ -17,6 +17,7 @@ use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterf
 
 /**
  * Class CategoriesJson
+ *
  * @package Cgi\ProductRestriction\Controller\Adminhtml\Widget
  */
 class CategoriesJson extends Widget implements HttpPostActionInterface

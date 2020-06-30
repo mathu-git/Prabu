@@ -10,14 +10,15 @@
 
 namespace Cgi\ProductRestriction\Model\Rule;
 
-use Cgi\ProductRestriction\Model\ResourceModel\Rule\Collection;
-use Cgi\ProductRestriction\Model\ResourceModel\Rule\CollectionFactory;
+use Magento\CatalogRule\Model\ResourceModel\Rule\Collection;
+use Magento\CatalogRule\Model\ResourceModel\Rule\CollectionFactory;
 use Magento\CatalogRule\Model\Rule;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 
 /**
  * Class DataProvider
+ *
  * @package Cgi\ProductRestriction\Model\Rule
  */
 class DataProvider extends AbstractDataProvider
@@ -41,7 +42,8 @@ class DataProvider extends AbstractDataProvider
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param CollectionFactory $ProductRestrictionCollectionFactory
+     * @param CollectionFactory $collectionFactory
+     * @param DataPersistorInterface $dataPersistor
      * @param array $meta
      * @param array $data
      */
@@ -50,10 +52,12 @@ class DataProvider extends AbstractDataProvider
         $primaryFieldName,
         $requestFieldName,
         CollectionFactory $ProductRestrictionCollectionFactory,
+        DataPersistorInterface $dataPersistor,
         array $meta = [],
         array $data = []
     ) {
         $this->collection = $ProductRestrictionCollectionFactory->create();
+        $this->dataPersistor = $dataPersistor;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
@@ -80,7 +84,6 @@ class DataProvider extends AbstractDataProvider
             $this->loadedData[$rule->getId()] = $rule->getData();
             $this->dataPersistor->clear('productrestriction_rule');
         }
-
         return $this->loadedData;
     }
 }

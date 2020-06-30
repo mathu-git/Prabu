@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 /**
  * Copyright © 2020 CGI. All rights reserved.
  * See COPYING.txt for license details.
@@ -40,4 +39,3 @@ class Catalog extends \Magento\Backend\Block\Widget\Grid\Container
         );
     }
 }
-

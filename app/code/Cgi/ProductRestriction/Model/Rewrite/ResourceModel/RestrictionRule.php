@@ -22,10 +22,19 @@ use Magento\CatalogRule\Model\ResourceModel\Rule;
  */
 class RestrictionRule extends Rule
 {
+    /**
+     * Catalog Customer Group Table name
+     */
     const CATALOGRULE_CUSTOMER_GROUP = 'catalogrule_customer_group';
 
+    /**
+     * Catalog rule table name
+     */
     const CATALOGRULE_TABLE = 'catalogrule';
 
+    /**
+     * Mapping catalog rule product table name
+     */
     const RESTRICTION_PRODUCT_TABLE = 'catalogrule_product';
     /**
      * Get the Rules id using Customer group id
@@ -41,7 +50,6 @@ class RestrictionRule extends Rule
             ->from($this->getTable(self::CATALOGRULE_CUSTOMER_GROUP), ['customer_group_id', 'rule_id'])
             ->where('customer_group_id = ?', $gId);
         return $connection->fetchAll($select);
-
     }
 
     /**

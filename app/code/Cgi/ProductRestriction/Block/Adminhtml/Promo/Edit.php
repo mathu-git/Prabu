@@ -16,6 +16,7 @@ use Magento\Backend\Block\Template\Context;
 
 /**
  * Class Edit
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Promo
  */
 class Edit extends \Magento\Backend\Block\Template
@@ -30,9 +31,7 @@ class Edit extends \Magento\Backend\Block\Template
     public function __construct(
         Context $context,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
     }
 }
-

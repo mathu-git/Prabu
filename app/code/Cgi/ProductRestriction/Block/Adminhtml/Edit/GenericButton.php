@@ -16,16 +16,20 @@ use Magento\Framework\Registry;
 
 /**
  * Class GenericButton
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Edit
  */
 class GenericButton
 {
-    /**
+    /**Build Url
+     *
      * @var \Magento\Framework\UrlInterface
      */
     protected $urlBuilder;
 
     /**
+     * Magento Register the Parameter
+     *
      * @var Registry
      */
     protected $registry;
@@ -39,13 +43,14 @@ class GenericButton
     public function __construct(
         Context $context,
         Registry $registry
-    )
-    {
+    ) {
         $this->urlBuilder = $context->getUrlBuilder();
         $this->registry = $registry;
     }
 
     /**
+     * Get the current rule id
+     *
      * @return |null
      */
     public function getRuleId()
@@ -55,6 +60,8 @@ class GenericButton
     }
 
     /**
+     * Get current Url
+     *
      * @param string $route
      * @param array $params
      * @return string
@@ -65,6 +72,8 @@ class GenericButton
     }
 
     /**
+     * Render the name
+     *
      * @param $name
      * @return mixed
      */
@@ -73,4 +82,3 @@ class GenericButton
         return $name;
     }
 }
-

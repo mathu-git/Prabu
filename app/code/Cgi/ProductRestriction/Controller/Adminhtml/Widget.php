@@ -14,15 +14,15 @@
 
  /**
   * Class Widget
+  *
   * @package Cgi\ProductRestriction\Controller\Adminhtml
   */
- abstract class Widget extends Action
- {
-     /**
+abstract class Widget extends Action
+{
+    /**
       * Authorization level of a basic admin session
       *
       * @see _isAllowed()
       */
-     const ADMIN_RESOURCE = 'Cgi_ProductRestriction::promo_catalog';
- }
-
+    const ADMIN_RESOURCE = 'Cgi_ProductRestriction::promo_catalog';
+}

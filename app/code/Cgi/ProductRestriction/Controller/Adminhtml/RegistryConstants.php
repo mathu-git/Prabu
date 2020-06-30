@@ -11,6 +11,7 @@ namespace Cgi\ProductRestriction\Controller\Adminhtml;
 
 /**
  * Class RegistryConstants
+ *
  * @package Cgi\ProductRestriction\Controller\Adminhtml
  */
 class RegistryConstants
@@ -20,4 +21,3 @@ class RegistryConstants
      */
     const CURRENT_RULE_ID = 'current_promo_productionrestriction_rule';
 }
-

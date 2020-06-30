@@ -14,12 +14,15 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class SaveAndApplyButton
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Edit
  */
 class SaveAndApplyButton extends GenericButton implements ButtonProviderInterface
 {
 
     /**
+     * Save Apply Action Button
+     *
      * @return array|void
      */
     public function getButtonData()
@@ -53,4 +56,3 @@ class SaveAndApplyButton extends GenericButton implements ButtonProviderInterfac
         return $data;
     }
 }
-

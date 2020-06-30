@@ -210,7 +210,8 @@
     <htmlContent name="html_content" sortOrder="20">
         <argument name="data" xsi:type="array">
             <item name="wrapper" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Conditions</item>
+                <item name="label" xsi:type="string" translate="true">Matching products will be hidden to the
+                    customer group selected</item>
                 <item name="collapsible" xsi:type="boolean">true</item>
                 <item name="opened" xsi:type="boolean">false</item>
             </item>
