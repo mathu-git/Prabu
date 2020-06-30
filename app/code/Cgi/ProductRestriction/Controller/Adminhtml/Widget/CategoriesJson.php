@@ -27,10 +27,10 @@ class CategoriesJson extends Widget implements HttpPostActionInterface
      *
      * @var Registry
      */
-    protected $_coreRegistry = null;
+    protected $coreRegistry = null;
 
     /**
-     * @param Context $context
+     * @param Context  $context
      * @param Registry $coreRegistry
      */
     public function __construct(Context $context, Registry $coreRegistry)

@@ -24,6 +24,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class Collection
+ *
  * @package Cgi\ProductRestriction\Model\Rewrite\Resource\Rule\Catalog
  */
 class Collection extends AbstractCollection
@@ -42,13 +43,14 @@ class Collection extends AbstractCollection
 
     /**
      * Collection constructor.
+     *
      * @param EntityFactoryInterface $entityFactory
-     * @param LoggerInterface $logger
+     * @param LoggerInterface        $logger
      * @param FetchStrategyInterface $fetchStrategy
-     * @param ManagerInterface $eventManager
-     * @param AdapterInterface $connection
-     * @param AbstractDb $resource
-     * @param Json|null $serializer
+     * @param ManagerInterface       $eventManager
+     * @param AdapterInterface       $connection
+     * @param AbstractDb             $resource
+     * @param Json|null              $serializer
      */
     public function __construct(
         EntityFactoryInterface $entityFactory,
@@ -67,7 +69,7 @@ class Collection extends AbstractCollection
     /**
      * Set resource model
      *
-     * @return void
+     * @return             void
      * @codeCoverageIgnore
      */
     protected function _construct()
@@ -78,7 +80,7 @@ class Collection extends AbstractCollection
     /**
      * Find product attribute in conditions or actions
      *
-     * @param string $attributeCode
+     * @param  string $attributeCode
      * @return Collection
      * @api
      */
@@ -91,8 +93,8 @@ class Collection extends AbstractCollection
     }
 
     /**
-     * @param string $entityType
-     * @param string $objectField
+     * @param  string $entityType
+     * @param  string $objectField
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return void
      */
@@ -115,12 +117,14 @@ class Collection extends AbstractCollection
 
         $associatedEntities = $this->getConnection()->fetchAll($select);
 
-        array_map(function ($associatedEntity) use ($entityInfo, $ruleIdField, $objectField) {
-            $item = $this->getItemByColumnValue($ruleIdField, $associatedEntity[$ruleIdField]);
-            $itemAssociatedValue = $item->getData($objectField) === null ? [] : $item->getData($objectField);
-            $itemAssociatedValue[] = $associatedEntity[$entityInfo['entity_id_field']];
-            $item->setData($objectField, $itemAssociatedValue);
-        }, $associatedEntities);
+        array_map(
+            function ($associatedEntity) use ($entityInfo, $ruleIdField, $objectField) {
+                $item = $this->getItemByColumnValue($ruleIdField, $associatedEntity[$ruleIdField]);
+                $itemAssociatedValue = $item->getData($objectField) === null ? [] : $item->getData($objectField);
+                $itemAssociatedValue[] = $associatedEntity[$entityInfo['entity_id_field']];
+                $item->setData($objectField, $itemAssociatedValue);
+            }, $associatedEntities
+        );
     }
 
     /**
@@ -138,7 +142,7 @@ class Collection extends AbstractCollection
     /**
      * Limit rules collection by specific customer group
      *
-     * @param int $customerGroupId
+     * @param  int $customerGroupId
      * @return $this
      */
     public function addCustomerGroupFilter($customerGroupId)
@@ -161,10 +165,10 @@ class Collection extends AbstractCollection
     /**
      * Associate the entity mapping process
      *
-     * @return array
+     * @return     array
      * @deprecated 100.1.0
      */
-    private function getAssociatedEntitiesMap()
+    public function getAssociatedEntitiesMap()
     {
         if (!$this->_associatedEntitiesMap) {
             $this->_associatedEntitiesMap = ObjectManager::getInstance()

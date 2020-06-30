@@ -15,6 +15,7 @@ use Magento\Framework\Registry;
 
 /**
  * Class RestrictionAction
+ *
  * @package Cgi\ProductRestriction\Controller\Adminhtml\Promo
  */
 abstract class RestrictionAction extends Action
@@ -31,11 +32,10 @@ abstract class RestrictionAction extends Action
      *
      * @var Registry
      */
-    protected $_coreRegistry = null;
+    protected $coreRegistry = null;
 
     /**
      * Dirty rules notice message
-     *
      *
      * @var string
      */
@@ -46,14 +46,14 @@ abstract class RestrictionAction extends Action
      *
      * @var \Magento\Framework\Stdlib\DateTime\Filter\Date
      */
-    protected $_dateFilter;
+    protected $dateFilter;
 
     /**
      * Constructor
      *
-     * @param Context $context
+     * @param Context  $context
      * @param Registry $coreRegistry
-     * @param Date $dateFilter
+     * @param Date     $dateFilter
      */
     public function __construct(Context $context, Registry $coreRegistry)
     {

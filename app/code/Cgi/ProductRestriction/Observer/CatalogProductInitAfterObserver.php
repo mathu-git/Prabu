@@ -14,10 +14,7 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Cgi\ProductRestriction\Helper\Data;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
-use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 
 /**
  * Class CatalogProductInitAfterObserver
@@ -45,14 +42,14 @@ class CatalogProductInitAfterObserver implements ObserverInterface
      *
      * @var dataHelper
      */
-    private $dataHelper;
+    protected $dataHelper;
 
     /**
      * Passing the parameter in the constructor
      *
-     * @param UrlInterface $url url
-     * @param Session $customerSession current customer id
-     * @param Data $dataHelper product restriction Id
+     * @param UrlInterface $url             url
+     * @param Session      $customerSession current customer id
+     * @param Data         $dataHelper      product restriction Id
      */
     public function __construct(
         UrlInterface $url,
@@ -67,7 +64,7 @@ class CatalogProductInitAfterObserver implements ObserverInterface
     /**
      * Check the product restricted id and update to the collection
      *
-     * @param observer $observer  Observer entity.
+     * @param observer $observer Observer entity.
      *
      * @return $this void
      */

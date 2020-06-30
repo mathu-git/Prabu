@@ -33,7 +33,9 @@ class ApplyRules extends Catalog implements HttpPostActionInterface
     {
         $errorMessage = __('We can\'t apply the rules.');
         try {
-            /** @var Job $ruleJob */
+            /**
+ * @var Job $ruleJob
+*/
             $ruleJob = $this->_objectManager->get(Job::class);
             $ruleJob->applyAll();
 
@@ -48,7 +50,9 @@ class ApplyRules extends Catalog implements HttpPostActionInterface
             $this->messageManager->addErrorMessage($errorMessage);
         }
 
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        /**
+         * @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect
+         */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $data = $this->getRequest()->getPostValue();
         if ($data && $data['is_product_restriction'] === '1') {

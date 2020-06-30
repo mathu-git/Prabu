@@ -29,7 +29,7 @@ class Conditions extends Generic implements TabInterface
     /**
      * Get Render the form fieldset
      *
-     * @var Fieldset
+     * @var \Magento\Backend\Block\Widget\Form\Renderer\Fieldset
      */
     protected $_rendererFieldset;
 
@@ -43,12 +43,12 @@ class Conditions extends Generic implements TabInterface
     /**
      * Passing the class in the constructor
      *
-     * @param Context $context
-     * @param Registry $registry
-     * @param FormFactory $formFactory
+     * @param Context                        $context
+     * @param Registry                       $registry
+     * @param FormFactory                    $formFactory
      * @param \Magento\Rule\Block\Conditions $conditions
-     * @param Fieldset $rendererFieldset
-     * @param array $data
+     * @param Fieldset                       $rendererFieldset
+     * @param array                          $data
      */
     public function __construct(
         Context $context,
@@ -142,7 +142,9 @@ class Conditions extends Generic implements TabInterface
     {
         $model = $this->_coreRegistry->registry('current_promo_productionrestriction_rule');
 
-        /** @var \Magento\Framework\Data\Form $form */
+        /**
+ * @var \Magento\Framework\Data\Form $form
+*/
         $form = $this->addTabToForm($model);
         $this->setForm($form);
 
@@ -152,15 +154,17 @@ class Conditions extends Generic implements TabInterface
     /**
      * Add the tab form fieldset
      *
-     * @param \Magento\CatalogRule\Api\Data\RuleInterface $model
-     * @param string $fieldsetId
-     * @param string $formName
+     * @param  \Magento\CatalogRule\Api\Data\RuleInterface $model
+     * @param  string                                      $fieldsetId
+     * @param  string                                      $formName
      * @return \Magento\Framework\Data\Form
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     protected function addTabToForm($model, $fieldsetId = 'conditions_fieldset', $formName = 'productrestriction_rule_form')
     {
-        /** @var \Magento\Framework\Data\Form $form */
+        /**
+ * @var \Magento\Framework\Data\Form $form
+*/
         $form = $this->_formFactory->create();
         $form->setHtmlIdPrefix('rule_');
         $conditionsFieldSetId = $model->getConditionsFieldSetId($formName);
@@ -201,9 +205,9 @@ class Conditions extends Generic implements TabInterface
     /**
      * Set the condition based on the rule
      *
-     * @param AbstractCondition $conditions
-     * @param string $formName
-     * @param string $jsFormName
+     * @param  AbstractCondition $conditions
+     * @param  string            $formName
+     * @param  string            $jsFormName
      * @return void
      */
     private function setConditionFormName(AbstractCondition $conditions, $formName, $jsFormName)

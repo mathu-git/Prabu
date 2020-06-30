@@ -48,12 +48,13 @@ class Sku extends Extended
 
     /**
      * Sku constructor.
-     * @param Context $context
-     * @param Data $backendHelper
-     * @param CollectionFactory $eavAttSetCollection
+     *
+     * @param Context                                                        $context
+     * @param Data                                                           $backendHelper
+     * @param CollectionFactory                                              $eavAttSetCollection
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $cpCollection
-     * @param Type $catalogType
-     * @param array $data
+     * @param Type                                                           $catalogType
+     * @param array                                                          $data
      */
     public function __construct(
         Context $context,
@@ -96,7 +97,7 @@ class Sku extends Extended
     /**
      * Get the define the filter collection
      *
-     * @param Column $column
+     * @param  Column $column
      * @return $this
      */
     protected function _addColumnFilterToCollection($column)

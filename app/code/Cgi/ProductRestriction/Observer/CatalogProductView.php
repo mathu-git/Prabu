@@ -51,7 +51,7 @@ class CatalogProductView implements ObserverInterface
      *
      * @var Registry
      */
-    public $registry;
+    protected $registry;
 
     /**
      * Get Restricted Product ids
@@ -64,10 +64,10 @@ class CatalogProductView implements ObserverInterface
      * Passing the parameter in the constructor
      *
      * @param ResponseFactory $responseFactory Response results
-     * @param UrlInterface $url url
-     * @param Session $customerSession customer data
-     * @param Data $dataHelper Getting product id
-     * @param Registry $registry Registry
+     * @param UrlInterface    $url             url
+     * @param Session         $customerSession customer data
+     * @param Data            $dataHelper      Getting product id
+     * @param Registry        $registry        Registry
      */
     public function __construct(
         ResponseFactory $responseFactory,

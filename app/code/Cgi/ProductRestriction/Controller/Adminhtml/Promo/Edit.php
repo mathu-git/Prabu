@@ -7,6 +7,7 @@
  * @copyright 2020 CGI
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
 
 use Magento\Backend\App\Action\Context;
@@ -26,24 +27,32 @@ class Edit extends RestrictionAction implements HttpGetActionInterface
 {
 
     /**
+     * Resultpage Factory
+     *
      * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
+     * Core Registry
+     *
+     * @var coreRegistry
+     */
+    protected $coreRegistry;
+
+    /**
      * Constructor
      *
-     * @param Context $context
+     * @param Context     $context
      * @param PageFactory $resultPageFactory
      */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
         Registry $coreRegistry
-    )
-    {
+    ) {
         $this->resultPageFactory = $resultPageFactory;
-        $this->_coreRegistry = $coreRegistry;
+        $this->coreRegistry = $coreRegistry;
         parent::__construct($context, $coreRegistry);
     }
 
@@ -58,14 +67,12 @@ class Edit extends RestrictionAction implements HttpGetActionInterface
         $ruleRepository = $this->_objectManager->get(
             CatalogRuleRepositoryInterface::class
         );
-        if ($id) try {
+        if ($id) {
             $model = $ruleRepository->get($id);
-        } catch (\Magento\Framework\Exception\NoSuchEntityException $exception) {
-            $this->messageManager->addErrorMessage(__('This rule no longer exists.'));
-            $this->_redirect('catalog_productrestriction/*');
-            return;
         } else {
-            /** @var Rule $model */
+            /**
+             * @var Rule $model
+             */
             $model = $this->_objectManager->create(Rule::class);
         }
         $data = $this->_objectManager->get(Session::class)->getPageData(true);
@@ -76,7 +83,7 @@ class Edit extends RestrictionAction implements HttpGetActionInterface
         $model->getConditions()->setJsFormObject(
             $model->getConditionsFieldSetId($model->getConditions()->getFormName())
         );
-        $this->_coreRegistry->register('current_promo_productionrestriction_rule', $model);
+        $this->coreRegistry->register('current_promo_productionrestriction_rule', $model);
         $this->_initAction();
         $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Product Restriction Rule'));
         $this->_view->getPage()->getConfig()->getTitle()->prepend(
