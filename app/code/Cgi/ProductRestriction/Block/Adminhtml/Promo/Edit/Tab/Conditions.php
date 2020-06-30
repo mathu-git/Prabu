@@ -21,21 +21,28 @@ use Magento\Rule\Model\Condition\AbstractCondition;
 
 /**
  * Class Conditions
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Promo\Edit\Tab
  */
 class Conditions extends Generic implements TabInterface
 {
     /**
+     * Get Render the form fieldset
+     *
      * @var Fieldset
      */
     protected $_rendererFieldset;
 
     /**
+     * Condition
+     *
      * @var \Magento\Rule\Block\Conditions
      */
     protected $_conditions;
 
     /**
+     * Passing the class in the constructor
+     *
      * @param Context $context
      * @param Registry $registry
      * @param FormFactory $formFactory
@@ -57,6 +64,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Get condition Label
+     *
      * @return \Magento\Framework\Phrase|string
      */
     public function getTabLabel()
@@ -65,6 +74,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Get Table Title
+     *
      * @return \Magento\Framework\Phrase|string
      */
     public function getTabTitle()
@@ -73,6 +84,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Admin Tab Class
+     *
      * @return string|null
      */
     public function getTabClass()
@@ -81,6 +94,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Tab Url
+     *
      * @return string|null
      */
     public function getTabUrl()
@@ -89,6 +104,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Ajax Load
+     *
      * @return bool
      */
     public function isAjaxLoaded()
@@ -97,6 +114,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Show the tab
+     *
      * @return bool
      */
     public function canShowTab()
@@ -105,6 +124,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * hidden the form fields
+     *
      * @return bool
      */
     public function isHidden()
@@ -113,6 +134,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Create tab and form
+     *
      * @return Form
      */
     protected function _prepareForm()
@@ -127,6 +150,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Add the tab form fieldset
+     *
      * @param \Magento\CatalogRule\Api\Data\RuleInterface $model
      * @param string $fieldsetId
      * @param string $formName
@@ -174,6 +199,8 @@ class Conditions extends Generic implements TabInterface
     }
 
     /**
+     * Set the condition based on the rule
+     *
      * @param AbstractCondition $conditions
      * @param string $formName
      * @param string $jsFormName

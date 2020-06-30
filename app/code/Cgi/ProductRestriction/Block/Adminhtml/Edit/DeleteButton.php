@@ -14,6 +14,7 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class DeleteButton
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Edit
  */
 class DeleteButton extends GenericButton implements ButtonProviderInterface
@@ -26,7 +27,6 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
      */
     public function getButtonData()
     {
-        $data = [];
         $ruleId = $this->getRuleId();
         if ($ruleId && $this->canRender('delete')) {
             $data = [

@@ -21,37 +21,47 @@ use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class Data
+ *
  * @package Cgi\ProductRestriction\Helper
  */
 class Data extends AbstractHelper
 {
     /**
-     *
+     * Restricted product rule flag
      */
     const IS_RESTRICTION = 1;
 
     /**
+     * Check the timezone
+     *
      * @var TimezoneInterface
      */
     protected $dateTime;
 
     /**
+     * Store Manager
+     *
      * @var StoreManagerInterface
      */
     protected $storeManager;
 
     /**
+     * Get the Customer Data
+     *
      * @var Session
      */
     protected $customerSession;
 
     /**
+     * Restriction rule condition
+     *
      * @var RestrictionRule
      */
     private $ruleResource;
 
     /**
      * Data constructor.
+     *
      * @param TimezoneInterface $dateTime
      * @param StoreManagerInterface $storeManager
      * @param Session $customerSession
@@ -73,9 +83,9 @@ class Data extends AbstractHelper
     }
 
     /**
+     * Using customer group id to get the rule id
+     *
      * @return array|bool
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
      */
     public function getRestrictionCustomerGroupRuleds()
     {
@@ -93,9 +103,9 @@ class Data extends AbstractHelper
     }
 
     /**
+     * Get the Active rule id
+     *
      * @return array|bool
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
      */
     public function getActiveRulesId()
     {
@@ -114,9 +124,9 @@ class Data extends AbstractHelper
     }
 
     /**
+     * Selected restricted product ids based on the rule id
+     *
      * @return array|bool
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
      */
     public function getRestrictionProducts()
     {

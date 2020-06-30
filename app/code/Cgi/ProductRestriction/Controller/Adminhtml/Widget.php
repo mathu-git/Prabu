@@ -14,6 +14,7 @@
 
  /**
   * Class Widget
+  *
   * @package Cgi\ProductRestriction\Controller\Adminhtml
   */
 abstract class Widget extends Action

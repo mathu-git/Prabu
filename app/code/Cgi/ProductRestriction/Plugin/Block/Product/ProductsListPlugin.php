@@ -14,29 +14,45 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogWidget\Block\Product\ProductsList;
 use Cgi\ProductRestriction\Helper\Data;
 use Magento\Customer\Model\Session;
-use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class ProductsListPlugin
+ *
+ * @package Cgi\ProductRestriction\Plugin\Block\Product
+ */
 class ProductsListPlugin
 {
     /**
+     * Customer Data
+     *
      * @var Session
      */
     protected $customerSession;
 
     /**
-     * @var
+     * Get data from rule id
+     *
+     * @var Data
      */
-    protected $helper;
+    private $dataHelper;
 
+    /**
+     * ProductsListPlugin constructor.
+     *
+     * @param Session $customerSession
+     * @param Data $dataHelper
+     */
     public function __construct(
         Session $customerSession,
-        Data $helper
+        Data $dataHelper
     ) {
         $this->customerSession = $customerSession;
-        $this->dataHelper = $helper;
+        $this->dataHelper = $dataHelper;
     }
 
     /**
+     * Get the result after load the product collection
+     *
      * @param ProductsList $subject
      * @param Collection $result
      * @return Collection
@@ -44,13 +60,9 @@ class ProductsListPlugin
      */
     public function afterCreateCollection(ProductsList $subject, Collection $result)
     {
-        try {
-            $productIds = $this->dataHelper->getRestrictionProducts();
-            $result->addAttributeToSelect('*')
-                ->addAttributeToFilter('entity_id', array('nin' => $productIds));
-            return $result;
-        } catch (NoSuchEntityException $e) {
-            return [];
-        }
+        $productIds = $this->dataHelper->getRestrictionProducts();
+        $result->addAttributeToSelect('*')
+            ->addAttributeToFilter('entity_id', array('nin' => $productIds));
+        return $result;
     }
 }

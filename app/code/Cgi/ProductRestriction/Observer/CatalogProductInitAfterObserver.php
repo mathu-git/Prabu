@@ -11,14 +11,12 @@
 namespace Cgi\ProductRestriction\Observer;
 
 use Magento\Customer\Model\Session;
-use Magento\Framework\App\ResponseFactory;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Cgi\ProductRestriction\Helper\Data;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 
 /**
@@ -29,56 +27,52 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 class CatalogProductInitAfterObserver implements ObserverInterface
 {
     /**
-     * @var ResponseFactory
-     */
-    protected $responseFactory;
-
-    /**
+     * Check the current customer Id
+     *
      * @var Session
      */
     protected $customerSession;
 
     /**
+     * Check the current url
+     *
      * @var UrlInterface
      */
     protected $url;
 
     /**
-     * @var
-     */
-    protected $helper;
-    /**
+     * Getting restricted product id from the helper
+     *
      * @var dataHelper
      */
-    public $dataHelper;
+    private $dataHelper;
 
     /**
-     * @param ResponseFactory $responseFactory
-     * @param UrlInterface $url
-     * @param Session $customerSession
-     * @param Data $dataHelper
+     * Passing the parameter in the constructor
+     *
+     * @param UrlInterface $url url
+     * @param Session $customerSession current customer id
+     * @param Data $dataHelper product restriction Id
      */
     public function __construct(
-        ResponseFactory $responseFactory,
         UrlInterface $url,
         Session $customerSession,
         Data $dataHelper
     ) {
-        $this->responseFactory = $responseFactory;
         $this->url = $url;
         $this->customerSession = $customerSession;
         $this->dataHelper = $dataHelper;
     }
 
     /**
-     * Execute observer.
+     * Check the product restricted id and update to the collection
      *
-     * @param \Magento\Framework\Event\Observer $observer
-     * @return $this
+     * @param observer $observer  Observer entity.
+     *
+     * @return $this void
      */
     public function execute(Observer $observer)
     {
-        /** @var ProductCollection $collection */
         $newCollection = $observer->getEvent()->getCollection();
         $productIds = $this->dataHelper->getRestrictionProducts();
         if ($newCollection) {

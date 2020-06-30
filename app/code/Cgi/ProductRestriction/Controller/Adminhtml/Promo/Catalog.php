@@ -1,26 +1,42 @@
 <?php
-declare(strict_types=1);
-
+/**
+ * Copyright © 2020 CGI. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * @author    CGI <info.de@cgi.com>
+ * @copyright 2020 CGI
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Cgi\ProductRestriction\Controller\Adminhtml\Promo\RestrictionAction;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Catalog
+ *
+ * @package Cgi\ProductRestriction\Controller\Adminhtml\Promo
+ */
 class Catalog extends RestrictionAction implements HttpGetActionInterface
 {
 
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory;
 
     /**
      * Constructor
      *
-     * @param \Magento\Backend\App\Action\Context  $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param Context  $context
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $coreRegistry
+        Context $context,
+        PageFactory $resultPageFactory,
+        Registry $coreRegistry
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $coreRegistry;

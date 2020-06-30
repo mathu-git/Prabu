@@ -16,6 +16,7 @@ use Cgi\ProductRestriction\Controller\Adminhtml\Widget;
 
 /**
  * Class Chooser
+ *
  * @package Cgi\ProductRestriction\Controller\Adminhtml\Widget
  */
 class Chooser extends Widget

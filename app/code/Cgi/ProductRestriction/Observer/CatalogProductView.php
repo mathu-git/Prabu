@@ -18,54 +18,76 @@ use Cgi\ProductRestriction\Helper\Data;
 use Magento\Framework\Registry;
 use Magento\Framework\UrlInterface;
 
+/**
+ * Class CatalogProductView
+ *
+ * @package Cgi\ProductRestriction\Observer
+ */
 class CatalogProductView implements ObserverInterface
 {
     /**
+     * Response Factory
+     *
      * @var ResponseFactory
      */
     protected $responseFactory;
 
     /**
+     * Getting Current customer data
+     *
      * @var Session
      */
     protected $customerSession;
 
     /**
+     * Check the url
+     *
      * @var UrlInterface
      */
     protected $url;
 
     /**
-     * @var $helper
+     * Register Factory
+     *
+     * @var Registry
      */
-    protected $helper;
-
     public $registry;
 
     /**
+     * Get Restricted Product ids
+     *
      * @var Data
      */
     public $dataHelper;
 
     /**
-     * @param ResponseFactory $responseFactory
-     * @param UrlInterface $url
-     * @param Session $customerSession
+     * Passing the parameter in the constructor
+     *
+     * @param ResponseFactory $responseFactory Response results
+     * @param UrlInterface $url url
+     * @param Session $customerSession customer data
+     * @param Data $dataHelper Getting product id
+     * @param Registry $registry Registry
      */
     public function __construct(
         ResponseFactory $responseFactory,
         UrlInterface $url,
         Session $customerSession,
-        Data $helper,
+        Data $dataHelper,
         Registry $registry
     ) {
         $this->responseFactory = $responseFactory;
         $this->url = $url;
         $this->customerSession = $customerSession;
-        $this->dataHelper = $helper;
+        $this->dataHelper = $dataHelper;
         $this->registry = $registry;
     }
 
+    /**
+     *  Check the product restricted id and update to the collection in Home page
+     *
+     * @param Observer $observer Observer entity.
+     */
     public function execute(Observer $observer)
     {
         $restrictedProductIds = $this->dataHelper->getRestrictionProducts();

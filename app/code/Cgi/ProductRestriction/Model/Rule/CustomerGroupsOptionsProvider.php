@@ -17,6 +17,7 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Class CustomerGroupsOptionsProvider
+ *
  * @package Cgi\ProductRestriction\Model\Rule
  */
 class CustomerGroupsOptionsProvider implements OptionSourceInterface

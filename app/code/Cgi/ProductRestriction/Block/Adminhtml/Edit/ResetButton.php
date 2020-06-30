@@ -14,12 +14,15 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class ResetButton
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Edit
  */
 class ResetButton extends GenericButton implements ButtonProviderInterface
 {
 
     /**
+     * Reset button Action
+     *
      * @return array
      */
     public function getButtonData()

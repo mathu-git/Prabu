@@ -16,6 +16,7 @@ use Magento\Backend\Block\Template\Context;
 
 /**
  * Class Edit
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Promo
  */
 class Edit extends \Magento\Backend\Block\Template

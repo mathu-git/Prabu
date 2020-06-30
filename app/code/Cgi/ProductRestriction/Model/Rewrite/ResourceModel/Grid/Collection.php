@@ -12,6 +12,7 @@ namespace Cgi\ProductRestriction\Model\Rewrite\ResourceModel\Grid;
 
 /**
  * Class Collection
+ *
  * @package Cgi\ProductRestriction\Model\Rewrite\ResourceModel\Grid
  */
 class Collection extends \Magento\CatalogRule\Model\ResourceModel\Rule\Collection

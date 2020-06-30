@@ -1,13 +1,11 @@
 <?php
 /**
- * *
- *  * Copyright © 2020 CGI. All rights reserved.
- *  * See COPYING.txt for license details.
- *  *
- *  * @author    CGI <info.de@cgi.com>
- *  * @copyright 2020 CGI
- *  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * Copyright © 2020 CGI. All rights reserved.
+ * See COPYING.txt for license details.
  *
+ * @author    CGI <info.de@cgi.com>
+ * @copyright 2020 CGI
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
 
@@ -15,6 +13,10 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
 
+/**
+ * Class RestrictionAction
+ * @package Cgi\ProductRestriction\Controller\Adminhtml\Promo
+ */
 abstract class RestrictionAction extends Action
 {
     /**
@@ -76,11 +78,17 @@ abstract class RestrictionAction extends Action
         return $this;
     }
 
+    /**
+     * @param $dirtyRulesNoticeMessage
+     */
     public function setDirtyRulesNoticeMessage($dirtyRulesNoticeMessage)
     {
         $this->_dirtyRulesNoticeMessage = $dirtyRulesNoticeMessage;
     }
 
+    /**
+     * @return \Magento\Framework\Phrase|string
+     */
     public function getDirtyRulesNoticeMessage()
     {
         $defaultMessage = __(

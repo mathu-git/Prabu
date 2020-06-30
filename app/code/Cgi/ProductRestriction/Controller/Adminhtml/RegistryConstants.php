@@ -11,6 +11,7 @@ namespace Cgi\ProductRestriction\Controller\Adminhtml;
 
 /**
  * Class RegistryConstants
+ *
  * @package Cgi\ProductRestriction\Controller\Adminhtml
  */
 class RegistryConstants

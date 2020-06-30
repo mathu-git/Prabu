@@ -1,27 +1,47 @@
 <?php
-declare(strict_types=1);
-
+/**
+ * Copyright © 2020 CGI. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * @author    CGI <info.de@cgi.com>
+ * @copyright 2020 CGI
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
 
+use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\Session;
+use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
 use Magento\CatalogRule\Model\Rule;
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Edit
+ *
+ * @package Cgi\ProductRestriction\Controller\Adminhtml\Promo
+ */
 class Edit extends RestrictionAction implements HttpGetActionInterface
 {
 
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory;
 
     /**
      * Constructor
      *
-     * @param \Magento\Backend\App\Action\Context  $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $coreRegistry
-    ) {
+        Context $context,
+        PageFactory $resultPageFactory,
+        Registry $coreRegistry
+    )
+    {
         $this->resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $coreRegistry;
         parent::__construct($context, $coreRegistry);
@@ -36,21 +56,19 @@ class Edit extends RestrictionAction implements HttpGetActionInterface
     {
         $id = $this->getRequest()->getParam('id');
         $ruleRepository = $this->_objectManager->get(
-            \Magento\CatalogRule\Api\CatalogRuleRepositoryInterface::class
+            CatalogRuleRepositoryInterface::class
         );
-        if ($id) {
-            try {
-                $model = $ruleRepository->get($id);
-            } catch (\Magento\Framework\Exception\NoSuchEntityException $exception) {
-                $this->messageManager->addErrorMessage(__('This rule no longer exists.'));
-                $this->_redirect('catalog_productrestriction/*');
-                return;
-            }
+        if ($id) try {
+            $model = $ruleRepository->get($id);
+        } catch (\Magento\Framework\Exception\NoSuchEntityException $exception) {
+            $this->messageManager->addErrorMessage(__('This rule no longer exists.'));
+            $this->_redirect('catalog_productrestriction/*');
+            return;
         } else {
             /** @var Rule $model */
             $model = $this->_objectManager->create(Rule::class);
         }
-        $data = $this->_objectManager->get(\Magento\Backend\Model\Session::class)->getPageData(true);
+        $data = $this->_objectManager->get(Session::class)->getPageData(true);
         if (!empty($data)) {
             $model->addData($data);
         }

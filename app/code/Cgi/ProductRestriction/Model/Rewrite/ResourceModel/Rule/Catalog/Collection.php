@@ -159,6 +159,8 @@ class Collection extends AbstractCollection
     }
 
     /**
+     * Associate the entity mapping process
+     *
      * @return array
      * @deprecated 100.1.0
      */

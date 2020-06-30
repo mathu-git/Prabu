@@ -23,6 +23,7 @@ use Magento\Framework\App\ObjectManager;
 
 /**
  * Class Save
+ *
  * @package Cgi\ProductRestriction\Controller\Rewrite\Adminhtml\Promo\Catalog
  */
 class Save extends Catalog implements HttpPostActionInterface
@@ -53,6 +54,7 @@ class Save extends Catalog implements HttpPostActionInterface
 
     /**
      * Save constructor.
+     *
      * @param Context $context
      * @param Registry $coreRegistry
      * @param Date $dateFilter
@@ -185,6 +187,8 @@ class Save extends Catalog implements HttpPostActionInterface
     }
 
     /**
+     * Save the product Restriction
+     *
      * @param $data
      */
     public function SaveProductRestriction($data)

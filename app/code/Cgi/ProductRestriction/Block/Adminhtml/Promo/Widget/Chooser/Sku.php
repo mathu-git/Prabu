@@ -12,17 +12,21 @@ namespace Cgi\ProductRestriction\Block\Adminhtml\Promo\Widget\Chooser;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Grid\Column;
+use Magento\Backend\Block\Widget\Grid\Extended;
 use Magento\Backend\Helper\Data;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory;
 
 /**
  * Class Sku
+ *
  * @package Cgi\ProductRestriction\Block\Adminhtml\Promo\Widget\Chooser
  */
-class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
+class Sku extends Extended
 {
     /**
+     * Category Type
+     *
      * @var Type
      */
     protected $_catalogType;
@@ -90,6 +94,8 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
+     * Get the define the filter collection
+     *
      * @param Column $column
      * @return $this
      */
@@ -209,6 +215,8 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
+     * Get the grid condition choose url
+     *
      * @return string
      */
     public function getGridUrl()
@@ -220,6 +228,8 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
+     * Define the selected the products
+     *
      * @return mixed
      */
     protected function _getSelectedProducts()
