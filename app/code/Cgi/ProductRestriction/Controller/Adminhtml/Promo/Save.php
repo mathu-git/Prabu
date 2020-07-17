@@ -11,7 +11,7 @@ namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
 
 use Cgi\ProductRestriction\Api\RestrictionRuleRepositoryInterface;
 use Cgi\ProductRestriction\Model\Flag;
-use Cgi\ProductRestriction\Model\Rule;
+use Magento\CatalogRule\Model\Rule;
 use Magento\Backend\App\Action;
 use Magento\Backend\Model\Session;
 use Magento\Framework\App\ResponseInterface;
@@ -24,6 +24,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class Save
+ *
  * @package Cgi\ProductRestriction\Controller\Adminhtml\Promo
  */
 class Save extends Action
@@ -35,9 +36,10 @@ class Save extends Action
 
     /**
      * Save constructor.
-     * @param Context $context
-     * @param Registry $coreRegistry
-     * @param Date $dateFilter
+     *
+     * @param Context                $context
+     * @param Registry               $coreRegistry
+     * @param Date                   $dateFilter
      * @param DataPersistorInterface $dataPersistor
      */
     public function __construct(
@@ -61,7 +63,9 @@ class Save extends Action
             $ruleRepository = $this->_objectManager->get(
                 RestrictionRuleRepositoryInterface::class
             );
-            /** @var \Cgi\ProductRestriction\Model\Rule $model */
+            /**
+ * @var \Magento\CatalogRule\Model\Rule $model
+*/
             $model = $this->_objectManager->create(Rule::class);
             try {
                 $this->_eventManager->dispatch(

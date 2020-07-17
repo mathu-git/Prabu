@@ -25,23 +25,24 @@ class CustomerGroupsOptionsProvider implements OptionSourceInterface
     /**
      * @var GroupRepositoryInterface
      */
-    private $groupRepository;
+    protected $groupRepository;
 
     /**
      * @var SearchCriteriaBuilder
      */
-    private $searchCriteriaBuilder;
+    protected $searchCriteriaBuilder;
 
     /**
      * @var DataObject
      */
-    private $objectConverter;
+    protected $objectConverter;
 
     /**
      * CustomerGroupsOptionsProvider constructor.
+     *
      * @param GroupRepositoryInterface $groupRepository
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param DataObject $objectConverter
+     * @param SearchCriteriaBuilder    $searchCriteriaBuilder
+     * @param DataObject               $objectConverter
      */
     public function __construct(
         GroupRepositoryInterface $groupRepository,

@@ -30,7 +30,7 @@ class Catalog extends RestrictionAction implements HttpGetActionInterface
     /**
      * Constructor
      *
-     * @param Context  $context
+     * @param Context     $context
      * @param PageFactory $resultPageFactory
      */
     public function __construct(

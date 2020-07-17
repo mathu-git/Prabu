@@ -39,13 +39,15 @@ class DataProvider extends AbstractDataProvider
     protected $dataPersistor;
 
     /**
-     * @param string $name
-     * @param string $primaryFieldName
-     * @param string $requestFieldName
-     * @param CollectionFactory $collectionFactory
+     * Constructor
+     *
+     * @param string                 $name
+     * @param string                 $primaryFieldName
+     * @param string                 $requestFieldName
+     * @param CollectionFactory      $ProductRestrictionCollectionFactory
      * @param DataPersistorInterface $dataPersistor
-     * @param array $meta
-     * @param array $data
+     * @param array                  $meta
+     * @param array                  $data
      */
     public function __construct(
         $name,
@@ -72,7 +74,9 @@ class DataProvider extends AbstractDataProvider
             return $this->loadedData;
         }
         $items = $this->collection->getItems();
-        /** @var Rule $rule */
+        /**
+         * @var Rule $rule
+         */
         foreach ($items as $rule) {
             $rule->load($rule->getId());
             $this->loadedData[$rule->getId()] = $rule->getData();

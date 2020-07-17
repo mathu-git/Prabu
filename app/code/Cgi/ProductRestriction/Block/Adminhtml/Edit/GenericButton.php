@@ -21,7 +21,8 @@ use Magento\Framework\Registry;
  */
 class GenericButton
 {
-    /**Build Url
+    /**
+     * Build Url
      *
      * @var \Magento\Framework\UrlInterface
      */
@@ -37,7 +38,7 @@ class GenericButton
     /**
      * GenericButton constructor
      *
-     * @param Context $context
+     * @param Context  $context
      * @param Registry $registry
      */
     public function __construct(
@@ -62,8 +63,8 @@ class GenericButton
     /**
      * Get current Url
      *
-     * @param string $route
-     * @param array $params
+     * @param  string $route
+     * @param  array  $params
      * @return string
      */
     public function getUrl($route = '', $params = [])
@@ -74,7 +75,7 @@ class GenericButton
     /**
      * Render the name
      *
-     * @param $name
+     * @param  $name
      * @return mixed
      */
     public function canRender($name)

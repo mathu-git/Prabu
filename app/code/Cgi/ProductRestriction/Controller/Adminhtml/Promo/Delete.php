@@ -30,7 +30,9 @@ class Delete extends Action
         $id = $this->getRequest()->getParam('id');
         if ($id) {
             try {
-                /** @var CatalogRuleRepositoryInterface $ruleRepository */
+                /**
+ * @var CatalogRuleRepositoryInterface $ruleRepository 
+*/
                 $ruleRepository = $this->_objectManager->get(
                     CatalogRuleRepositoryInterface::class
                 );

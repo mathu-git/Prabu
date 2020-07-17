@@ -38,27 +38,27 @@ class Save extends Catalog implements HttpPostActionInterface
      *
      * @var Registry
      */
-    protected $_coreRegistry = null;
+    protected $coreRegistry = null;
 
     /**
      * Date filter instance
      *
      * @var \Magento\Framework\Stdlib\DateTime\Filter\Date
      */
-    protected $_dateFilter;
+    protected $dateFilter;
 
     /**
      * @var TimezoneInterface
      */
-    private $localeDate;
+    protected $localeDate;
 
     /**
      * Save constructor.
      *
-     * @param Context $context
-     * @param Registry $coreRegistry
-     * @param Date $dateFilter
-     * @param TimezoneInterface|null $localeDate
+     * @param Context                     $context
+     * @param Registry                    $coreRegistry
+     * @param Date                        $dateFilter
+     * @param TimezoneInterface|null      $localeDate
      * @param DataPersistorInterface|null $dataPersistor
      */
     public function __construct(
@@ -86,16 +86,20 @@ class Save extends Catalog implements HttpPostActionInterface
     {
         $data = $this->getRequest()->getPostValue();
         if ($data && $data['is_product_restriction'] === '1') {
-            $this->SaveProductRestriction($data);
+            $this->saveProductRestriction($data);
             return;
         }
 
         if ($data) {
-            /** @var CatalogRuleRepositoryInterface $ruleRepository */
+            /**
+ * @var CatalogRuleRepositoryInterface $ruleRepository
+*/
             $ruleRepository = $this->_objectManager->get(
                 CatalogRuleRepositoryInterface::class
             );
-            /** @var Rule $model */
+            /**
+ * @var Rule $model
+*/
             $model = $this->_objectManager->create(Rule::class);
 
             try {
@@ -191,14 +195,18 @@ class Save extends Catalog implements HttpPostActionInterface
      *
      * @param $data
      */
-    public function SaveProductRestriction($data)
+    public function saveProductRestriction($data)
     {
         if ($data) {
-            /** @var CatalogRuleRepositoryInterface $ruleRepository */
+            /**
+ * @var CatalogRuleRepositoryInterface $ruleRepository
+*/
             $ruleRepository = $this->_objectManager->get(
                 CatalogRuleRepositoryInterface::class
             );
-            /** @var Rule $model */
+            /**
+ * @var Rule $model
+*/
             $model = $this->_objectManager->create(Rule::class);
 
             try {

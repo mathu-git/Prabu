@@ -34,13 +34,13 @@ class ProductsListPlugin
      *
      * @var Data
      */
-    private $dataHelper;
+    protected $dataHelper;
 
     /**
      * ProductsListPlugin constructor.
      *
      * @param Session $customerSession
-     * @param Data $dataHelper
+     * @param Data    $dataHelper
      */
     public function __construct(
         Session $customerSession,
@@ -53,9 +53,9 @@ class ProductsListPlugin
     /**
      * Get the result after load the product collection
      *
-     * @param ProductsList $subject
-     * @param Collection $result
-     * @return Collection
+     * @param                                         ProductsList $subject
+     * @param                                         Collection   $result
+     * @return                                        Collection
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterCreateCollection(ProductsList $subject, Collection $result)

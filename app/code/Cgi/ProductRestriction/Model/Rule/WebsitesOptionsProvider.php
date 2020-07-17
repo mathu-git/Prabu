@@ -15,6 +15,7 @@ use Magento\Store\Model\System\Store;
 
 /**
  * Class WebsitesOptionsProvider
+ *
  * @package Cgi\ProductRestriction\Model\Rule
  */
 class WebsitesOptionsProvider implements OptionSourceInterface
@@ -22,7 +23,7 @@ class WebsitesOptionsProvider implements OptionSourceInterface
     /**
      * @var Store
      */
-    private $store;
+    protected $store;
 
     /**
      * @param Store $store

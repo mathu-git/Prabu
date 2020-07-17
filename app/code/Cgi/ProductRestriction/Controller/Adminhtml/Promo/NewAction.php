@@ -28,9 +28,10 @@ class NewAction extends RestrictionAction implements HttpGetActionInterface
 
     /**
      * NewAction constructor.
-     * @param Context $context
+     *
+     * @param Context     $context
      * @param PageFactory $resultPageFactory
-     * @param Registry $coreRegistry
+     * @param Registry    $coreRegistry
      */
     public function __construct(
         Context $context,

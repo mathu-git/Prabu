@@ -10,7 +10,6 @@
 
 /**
  * Catalog rules resource model
- *
  */
 
 namespace Cgi\ProductRestriction\Model\Rewrite\ResourceModel;
@@ -39,7 +38,7 @@ class RestrictionRule extends Rule
     /**
      * Get the Rules id using Customer group id
      *
-     * @param $gId
+     * @param  $gId
      * @return array
      */
     public function getRulesId($gId)
@@ -55,8 +54,8 @@ class RestrictionRule extends Rule
     /**
      * Using rule id and restriction flat to get the particular rule id
      *
-     * @param $restrictonRuleId
-     * @param $isRestriction
+     * @param  $restrictonRuleId
+     * @param  $isRestriction
      * @return array
      */
     public function getRestrictionActiveIds($restrictonRuleId, $isRestriction)
@@ -74,9 +73,9 @@ class RestrictionRule extends Rule
     /**
      * Get restriction product id using created rule id
      *
-     * @param $restrictedId
-     * @param $websiteId
-     * @param $customergroupId
+     * @param  $restrictedId
+     * @param  $websiteId
+     * @param  $customergroupId
      * @return array
      */
     public function getRestrectionProductIds($restrictedId, $websiteId, $customergroupId)

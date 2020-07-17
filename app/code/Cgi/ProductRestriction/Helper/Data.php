@@ -14,8 +14,6 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Cgi\ProductRestriction\Model\Rewrite\ResourceModel\RestrictionRule;
 use Magento\Customer\Model\Session;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -57,16 +55,16 @@ class Data extends AbstractHelper
      *
      * @var RestrictionRule
      */
-    private $ruleResource;
+    protected $ruleResource;
 
     /**
      * Data constructor.
      *
-     * @param TimezoneInterface $dateTime
+     * @param TimezoneInterface     $dateTime
      * @param StoreManagerInterface $storeManager
-     * @param Session $customerSession
-     * @param RestrictionRule $ruleResource
-     * @param Context $context
+     * @param Session               $customerSession
+     * @param RestrictionRule       $ruleResource
+     * @param Context               $context
      */
     public function __construct(
         TimezoneInterface $dateTime,

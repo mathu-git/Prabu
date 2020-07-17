@@ -22,7 +22,7 @@ use Cgi\ProductRestriction\Controller\Adminhtml\Widget;
 class Chooser extends Widget
 {
     /**
-     *Prepare the block for product and category chooser
+     * Prepare the block for product and category chooser
      *
      * @return void
      */
@@ -30,41 +30,41 @@ class Chooser extends Widget
     {
         $request = $this->getRequest();
         switch ($request->getParam('attribute')) {
-            case 'sku':
-                $block = $this->_view->getLayout()->createBlock(
-                    Sku::class,
-                    'promo_widget_chooser_sku',
-                    ['data' => ['js_form_object' => $request->getParam('form')]]
-                );
-                break;
+        case 'sku':
+            $block = $this->_view->getLayout()->createBlock(
+                Sku::class,
+                'promo_widget_chooser_sku',
+                ['data' => ['js_form_object' => $request->getParam('form')]]
+            );
+            break;
 
-            case 'category_ids':
-                $ids = $request->getParam('selected', []);
-                if (is_array($ids)) {
-                    foreach ($ids as $key => &$id) {
-                        $id = (int)$id;
-                        if ($id <= 0) {
-                            unset($ids[$key]);
-                        }
+        case 'category_ids':
+            $ids = $request->getParam('selected', []);
+            if (is_array($ids)) {
+                foreach ($ids as $key => &$id) {
+                    $id = (int)$id;
+                    if ($id <= 0) {
+                        unset($ids[$key]);
                     }
-
-                    $ids = array_unique($ids);
-                } else {
-                    $ids = [];
                 }
 
-                $block = $this->_view->getLayout()->createBlock(
-                    Tree::class,
-                    'promo_widget_chooser_category_ids',
-                    ['data' => ['js_form_object' => $request->getParam('form')]]
-                )->setCategoryIds(
-                    $ids
-                );
-                break;
+                $ids = array_unique($ids);
+            } else {
+                $ids = [];
+            }
 
-            default:
-                $block = false;
-                break;
+            $block = $this->_view->getLayout()->createBlock(
+                Tree::class,
+                'promo_widget_chooser_category_ids',
+                ['data' => ['js_form_object' => $request->getParam('form')]]
+            )->setCategoryIds(
+                $ids
+            );
+            break;
+
+        default:
+            $block = false;
+            break;
         }
 
         if ($block) {

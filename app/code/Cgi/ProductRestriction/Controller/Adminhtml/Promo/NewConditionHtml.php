@@ -10,7 +10,7 @@
 
 namespace Cgi\ProductRestriction\Controller\Adminhtml\Promo;
 
-use Cgi\ProductRestriction\Model\Rule;
+use Magento\CatalogRule\Model\Rule;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Rule\Model\Condition\AbstractCondition;
